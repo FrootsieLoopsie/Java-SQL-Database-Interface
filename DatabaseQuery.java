@@ -32,14 +32,22 @@ public class DatabaseQuery {
         settings.put("hibernate.show_sql", "true");
         settings.put("hibernate.format_sql", "true");
 
-        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(settings).build();
-        MetadataSources metadataSources = new MetadataSources(serviceRegistry);
-        Metadata metadata = metadataSources.buildMetadata();
+        try {
+            ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(settings).build();
+            MetadataSources metadataSources = new MetadataSources(serviceRegistry);
+            Metadata metadata = metadataSources.buildMetadata();
 
-        // here we build the SessionFactory (Hibernate 5.4)
-        SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
-        Session session = sessionFactory.getCurrentSession();
-        return session;
+            // here we build the SessionFactory (Hibernate 5.4)
+            SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
+            Session session = sessionFactory.getCurrentSession();
+            return session;
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            System.out.println("\nERREUR: Aucune session n'a pu être ouverte avec le serveur SQL. SVP vérifier url, usename, password.");
+            return null;
+        }
     }
 
 
@@ -48,13 +56,16 @@ public class DatabaseQuery {
 
         // Get Hibernate Server Session:
         Session session = DatabaseQuery.getCurrentSession();
-
-        ///TODO: RUN SQL QUERY
-        //Transaction tx = session.beginTransaction();
-        //SQLQuery query = session.createSQLQuery(this.sqlQuery); //"select emp_id, emp_name, emp_salary from Employee");
-        String output = "(Test: À faire)";
-
-        return description + "\nRésultat: " + output;
+        if(session == null) {
+            return "ERREUR: Aucune session n'a pu être ouverte avec le serveur SQL. SVP vérifier url, usename, password.";
+        }
+        else {
+            ///TODO: RUN SQL QUERY
+            //Transaction tx = session.beginTransaction();
+            //SQLQuery query = session.createSQLQuery(this.sqlQuery); //"select emp_id, emp_name, emp_salary from Employee");
+            String output = "(Test: Connection fonctionnelle!)";
+            return description + "\nRésultat: " + output;
+        }
     }
 
 }
