@@ -44,8 +44,7 @@ public class DatabaseQuery {
         }
         catch(Exception e) {
             e.printStackTrace();
-            System.out.println(e.getMessage());
-            System.out.println("\nERREUR: Aucune session n'a pu être ouverte avec le serveur SQL. SVP vérifier url, usename, password.");
+            System.out.println("ERREUR: Aucune session n'a pu être ouverte avec le serveur SQL. SVP vérifier url, usename, password.");
             return null;
         }
     }
