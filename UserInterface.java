@@ -9,18 +9,16 @@ public class UserInterface {
     private DatabaseQuery[] databaseQueries;
     private int numQueries;
 
-    public UserInterface(int maxNumQueries) {
-        this.frame = new JFrame();
-        this.queryButtons = new JButton[maxNumQueries];
-        this.databaseQueries = new DatabaseQuery[maxNumQueries];
-        this.numQueries = 0;
-    }
-
     public UserInterface() {
         this.frame = new JFrame();
+        this.frame.setSize(40 + 4 * 150, 300);
+
         this.queryButtons = new JButton[4];
         this.databaseQueries = new DatabaseQuery[4];
         this.numQueries = 0;
+
+        this.frame.setLayout(null);
+        this.frame.setVisible(true);
     }
 
     public DatabaseQuery getQueryOf(JButton queryButton) {
@@ -31,15 +29,21 @@ public class UserInterface {
     }
 
     public void setOutputMessage(String text) {
-
+        System.out.println(text);
     }
 
-    public void addButtonFor(DatabaseQuery query, String buttonName) {
+    public void addButton(DatabaseQuery query, String buttonName) {
         int i = this.numQueries % queryButtons.length;
         this.numQueries++;
         this.databaseQueries[i] = query;
         this.queryButtons[i] = new JButton(buttonName);
-        this.queryButtons[i].doClick();;
+
+        // Set the size and position:
+        this.queryButtons[i].setBounds(20 + (150 * i), 40, 140, 40);
+        this.queryButtons[i].setVisible(true);
+        this.frame.add(this.queryButtons[i]);
+
+        // Set the resulting action:
         this.queryButtons[i].addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
