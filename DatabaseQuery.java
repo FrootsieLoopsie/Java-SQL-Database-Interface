@@ -11,7 +11,14 @@ public class DatabaseQuery {
     }
 
     public String getOutput() {
-        return description;
+
+        // Settings:
+        String username = Main.username, password = Main.password, url = Main.url;
+
+        ///TODO: RUN SQL QUERY
+        String output = "(Test: À faire)";
+
+        return description + "\nRésultat: " + output;
     }
 
 }

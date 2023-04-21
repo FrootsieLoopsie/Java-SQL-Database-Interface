@@ -1,5 +1,6 @@
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,9 +10,23 @@ public class UserInterface {
     private DatabaseQuery[] databaseQueries;
     private int numQueries;
 
+    private JTextArea output;
+
     public UserInterface() {
         this.frame = new JFrame();
-        this.frame.setSize(40 + 4 * 150, 300);
+        this.frame.setSize(200 + 4 * 150, 300);
+
+        JTextArea title = new JTextArea("IFT2905 - PROJET FINAL");
+        title.setBounds(10, 10, 10 + 4 * 150, 20);
+        this.frame.add(title);
+
+        JTextArea outputHeader = new JTextArea("Output:");
+        outputHeader.setBounds(10, 100, 10 + 4 * 150, 20);
+        this.frame.add(outputHeader);
+
+        this.output = new JTextArea();
+        this.output.setBounds(10, 130, 10 + 4 * 150, 120);
+        this.frame.add(this.output);
 
         this.queryButtons = new JButton[4];
         this.databaseQueries = new DatabaseQuery[4];
@@ -29,7 +44,7 @@ public class UserInterface {
     }
 
     public void setOutputMessage(String text) {
-        System.out.println(text);
+        this.output.setText(text);
     }
 
     public void addButton(DatabaseQuery query, String buttonName) {
