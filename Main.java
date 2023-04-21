@@ -9,6 +9,9 @@ public class Main {
     {
         UI =  new UserInterface();
 
+
+        ///TODO: Modifier les requêtes SQL associées aux boutons
+
         UI.addButton(new DatabaseQuery("SELECT * FROM *",
                 "Quel pays a été le plus de fois champion?"),
                 "Pays champion");

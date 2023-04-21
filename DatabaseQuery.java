@@ -19,6 +19,24 @@ public class DatabaseQuery {
 
     }
 
+    /// TODO
+    // From: https://www.digitalocean.com/community/tutorials/hibernate-native-sql-query-example
+    public String getOutput() {
+
+        // Get Hibernate Server Session:
+        Session session = DatabaseQuery.getCurrentSession();
+        if(session == null) {
+            return "ERREUR: Aucune session n'a pu être ouverte avec le serveur SQL. SVP vérifier url, usename, password.";
+        }
+        else {
+            ///TODO: RUN SQL QUERY
+            //Transaction tx = session.beginTransaction();
+            //SQLQuery query = session.createSQLQuery(this.sqlQuery); //"select emp_id, emp_name, emp_salary from Employee");
+            String output = "(Test: Connection fonctionnelle!)";
+            return description + "\nRésultat: " + output;
+        }
+    }
+
 
     // From: https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/3-ways-to-build-a-Hibernate-SessionFactory-in-Java-by-example
     private static Session getCurrentSession(){
@@ -48,23 +66,4 @@ public class DatabaseQuery {
             return null;
         }
     }
-
-
-    // From: https://www.digitalocean.com/community/tutorials/hibernate-native-sql-query-example
-    public String getOutput() {
-
-        // Get Hibernate Server Session:
-        Session session = DatabaseQuery.getCurrentSession();
-        if(session == null) {
-            return "ERREUR: Aucune session n'a pu être ouverte avec le serveur SQL. SVP vérifier url, usename, password.";
-        }
-        else {
-            ///TODO: RUN SQL QUERY
-            //Transaction tx = session.beginTransaction();
-            //SQLQuery query = session.createSQLQuery(this.sqlQuery); //"select emp_id, emp_name, emp_salary from Employee");
-            String output = "(Test: Connection fonctionnelle!)";
-            return description + "\nRésultat: " + output;
-        }
-    }
-
 }
