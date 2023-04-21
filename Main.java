@@ -12,6 +12,18 @@ public class Main {
         UI.addButton(new DatabaseQuery("SELECT * FROM *",
                 "Quel pays a été le plus de fois champion?"),
                 "Pays champion");
+
+        UI.addButton(new DatabaseQuery("SELECT * FROM *",
+                        "Quel pays a été le plus de fois champion?"),
+                "Pays champion");
+
+        UI.addButton(new DatabaseQuery("SELECT * FROM *",
+                        "Quel pays a été le plus de fois champion?"),
+                "Pays champion");
+
+        UI.addButton(new DatabaseQuery("SELECT * FROM *",
+                        "Quel pays a été le plus de fois champion?"),
+                "Pays champion");
     }
 
 }
