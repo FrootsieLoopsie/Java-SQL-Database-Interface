@@ -11,15 +11,16 @@ Ce projet d'école nécessite que l'évaluateur CRÉÉ son propre fichier `.env`
 - `url` (au format Postgres pour qu'Hibernate puisse le comprendre)
 
 Un exemple de fichier `.env` est fourni `.env.example`.
-- `username` : `postgres`
-- `password` : *(vide)*
-- `url` : `jdbc:postgresql://localhost:5432/postgres`
+
+```
+USERNAME=postgres
+PASSWORD=
+URL=jdbc:postgresql://localhost:5432/postgres
+```
 
 ## Création de la structure de la base de données
-Vous devez créer un serveur postgresql sur votre machine et executer les scripts sql dans le dossier `queries` dans l'ordre suivant :
-- Tables.sql
-- Migration.sql
-- TuplesCoupe.sql
+Vous devez créer un serveur postgresql sur votre machine et executer l'unique script SQL suivant:
+- `queries/script.sql`
 
 De cette façon, vous aurez une base de données avec les tables et les données nécessaires pour faire fonctionner l'application.
 
