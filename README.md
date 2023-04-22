@@ -4,7 +4,7 @@
 
 ## Variables d'environnement
 
-Ce projet d'école nécessite que l'évaluateur configure son fichier `.env` à la racine du dossier du projet avec les champs suivants :
+Ce projet d'école nécessite que l'évaluateur CRÉÉ son propre fichier `.env` à la racine du dossier du projet avec les champs suivants :
 
 - `username`
 - `password`
