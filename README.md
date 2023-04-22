@@ -42,9 +42,16 @@ Pour exécuter ce projet Java à partir du code source, vous aurez besoin des é
 ## Guide d'utilisation
 Chaque bouton de l'interface effectue la requête SQL reliée à sa question. Les résultats sont affichés dans l'interface sous forme de texte.
 
+#### Question 1
 ![Question 1](./captures-ecran/question1.png)
+
+#### Question 2
 ![Question 2](./captures-ecran/question2.png)
+
+#### Question 3
 ![Question 3](./captures-ecran/question3.png)
+
+#### Question 4
 ![Question 4](./captures-ecran/question4.png)
 
 
