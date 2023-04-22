@@ -1,6 +1,7 @@
 package com.ift2935.app;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.NativeQuery;
 import org.hibernate.Transaction;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -10,6 +11,7 @@ import org.hibernate.service.ServiceRegistry;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
 public class DatabaseQuery {
 
@@ -24,22 +26,36 @@ public class DatabaseQuery {
     /// TODO
     // From: https://www.digitalocean.com/community/tutorials/hibernate-native-sql-query-example
     public String getOutput() {
-
         // Get Hibernate Server Session:
         Session session = DatabaseQuery.getCurrentSession();
         if(session == null) {
             return "ERREUR: Aucune session n'a pu être ouverte avec le serveur SQL. SVP vérifier url, usename, password.";
         }
         else {
-            ///TODO: RUN SQL QUERY
-            //Transaction tx = session.beginTransaction();
-            //SQLQuery query = session.createSQLQuery(this.sqlQuery); //"select emp_id, emp_name, emp_salary from Employee");
-            String output = "(Test: Connection fonctionnelle!)";
-            return description + "\nRésultat: " + output;
+            // Run SQL query
+            NativeQuery query = session.createNativeQuery(this.sqlQuery);
+            List<Object[]> results = (List<Object[]>) query.getResultList();
+    
+            if (results.isEmpty()) {
+                return "";
+            } else if (results.size() == 1 && results.get(0).length == 1) {
+                // Single-element result
+                return results.get(0)[0].toString();
+            } else {
+                // Normal table result
+                StringBuilder sb = new StringBuilder();
+                for (Object[] row : results) {
+                    for (Object col : row) {
+                        sb.append(col.toString());
+                        sb.append("\t");
+                    }
+                    sb.append("\n");
+                }
+                return sb.toString();
+            }
         }
     }
-
-
+    
     // From: https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/3-ways-to-build-a-Hibernate-SessionFactory-in-Java-by-example
     private static Session getCurrentSession(){
         Map<String, Object> settings = new HashMap<>();

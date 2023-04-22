@@ -66,5 +66,7 @@ public class UserInterface {
                 Main.UI.setOutputMessage(query.getOutput());
             }
         });
+
+        this.frame.repaint();
     }
 }
