@@ -12,7 +12,7 @@ Ce projet d'école nécessite que l'évaluateur CRÉÉ son propre fichier `.env`
 
 Un exemple de fichier `.env` est fourni `.env.example`.
 - `username` : `postgres`
-- `password` : ``
+- `password` : *(vide)*
 - `url` : `jdbc:postgresql://localhost:5432/postgres`
 
 ## Création de la structure de la base de données
