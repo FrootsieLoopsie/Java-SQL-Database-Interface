@@ -1,4 +1,5 @@
-
+import io.github.cdimascio.dotenv.Dotenv;
+import io.github.cdimascio.dotenv.DotenvException;
 
 public class Main {
 
@@ -7,8 +8,16 @@ public class Main {
     public static String username, password, url;
     public static void main(String args[])
     {
-        UI =  new UserInterface();
 
+        // Environment Variables
+        Dotenv dotenv = null;
+        dotenv = Dotenv.configure().load();
+
+        username = dotenv.get("USERNAME");
+        password = dotenv.get("PASSWORD");
+        url = dotenv.get("URL");
+
+        UI =  new UserInterface();
 
         ///TODO: Modifier les requêtes SQL associées aux boutons
 
