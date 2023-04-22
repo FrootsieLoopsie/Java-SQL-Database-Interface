@@ -1,3 +1,4 @@
+package com.ift2935.app;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
