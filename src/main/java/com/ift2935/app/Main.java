@@ -31,7 +31,7 @@ public class Main {
                 "Question 2");
 
         UI.addButton(new DatabaseQuery("SELECT J.nom, J.prenom FROM Joueur J JOIN Sanction S ON J.identifiant = S.identifiant_joueur JOIN Match M ON S.id_match = M.id WHERE S.couleur ='R' and M.annee=2018;",
-                        "Les noms et prénoms des entraineurs des équipes qui ont été jusqu'en demi-finale en 2010 avec le pays en question."),
+                        "Les noms et prénoms des entraineurs des équipes qui ont été jusqu'en demi-finale en 2010 avec \nle pays en question."),
                 "Question 3");
 
         UI.addButton(new DatabaseQuery("SELECT s.nom, s.prenom FROM Staff s JOIN TravailPour collab ON s.identifiant = collab.identifiant_staff JOIN TravailPour trainer ON s.identifiant = trainer.identifiant_staff JOIN Equipe equipeCollab ON collab.id_equipe = equipeCollab.id_equipe JOIN Equipe equipeTrainer ON trainer.id_equipe = equipeTrainer.id_equipe WHERE collab.role_staff = 'collaborateur' AND trainer.role_staff = 'entraineur' AND equipeCollab.annee < equipeTrainer.annee;",

@@ -44,6 +44,7 @@ public class DatabaseQuery {
             } else {
                 // Normal table result
                 StringBuilder sb = new StringBuilder();
+                sb.append(this.description + "\n\n");
                 for (Object[] row : results) {
                     for (Object col : row) {
                         sb.append(col.toString());

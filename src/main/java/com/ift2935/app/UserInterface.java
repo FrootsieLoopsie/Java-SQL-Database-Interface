@@ -20,10 +20,6 @@ public class UserInterface {
         title.setBounds(10, 10, 10 + 4 * 150, 20);
         this.frame.add(title);
 
-        JTextArea outputHeader = new JTextArea("Output:");
-        outputHeader.setBounds(10, 100, 10 + 4 * 150, 20);
-        this.frame.add(outputHeader);
-
         this.output = new JTextArea();
         this.output.setBounds(10, 130, 10 + 4 * 150, 120);
         this.frame.add(this.output);
